@@ -22,7 +22,7 @@ import java.util.concurrent.Executors;
 public class ManagerClient {
     private static final int UPDATE_INTERVAL = 500;
 
-    @SuppressWarnings({"DuplicatedCode"})
+    @SuppressWarnings({"DuplicatedCode", "BusyWait"})
     public static void main(String[] args) {
         // set look and feel
         FlatMacLightLaf.setup();
@@ -33,9 +33,7 @@ public class ManagerClient {
         String username = args.length > 2 ? args[2] : UUID.randomUUID().toString().substring(0, 5);
 
         try {
-            new Thread(() -> {
-                new Server(port).run();
-            }).start();
+            new Thread(() -> new Server(port).run()).start();
 
             new Thread(() -> {
                 try (ServerSocket serverSocket = new ServerSocket(port + 1);

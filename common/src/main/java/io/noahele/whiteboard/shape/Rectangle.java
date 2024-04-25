@@ -27,16 +27,4 @@ public class Rectangle implements Shape {
     public void update(Point point) {
         end = point;
     }
-
-    @Override
-    public boolean contains(Point point) {
-        Point topLeft = new Point(Math.min(start.x, end.x), Math.min(start.y, end.y));
-        Point bottomRight = new Point(Math.max(start.x, end.x), Math.max(start.y, end.y));
-        return topLeft.x <= point.x && point.x <= bottomRight.x
-                && topLeft.y <= point.y && point.y <= bottomRight.y
-                && (point.x == topLeft.x
-                || point.x == bottomRight.x
-                || point.y == topLeft.y
-                || point.y == bottomRight.y);
-    }
 }

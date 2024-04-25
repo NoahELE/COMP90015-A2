@@ -1,7 +1,6 @@
 package io.noahele.whiteboard.gui;
 
 import io.noahele.whiteboard.Chat;
-import io.noahele.whiteboard.Connection;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +13,7 @@ public class ChatPanel extends JPanel {
     private final JTextArea chatArea;
     private final JTextField inputField;
 
-    public ChatPanel(Chat chat, Connection connection, String username) {
+    public ChatPanel(Chat chat, String username) {
         this.chat = chat;
         setLayout(new BorderLayout());
 

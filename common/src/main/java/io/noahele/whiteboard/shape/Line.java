@@ -30,9 +30,4 @@ public class Line implements Shape {
     public void update(Point point) {
         end = point;
     }
-
-    @Override
-    public boolean contains(Point point) {
-        return start.distance(point) + end.distance(point) - start.distance(end) < THRESHOLD;
-    }
 }

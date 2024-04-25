@@ -7,6 +7,4 @@ public interface Shape extends Serializable {
     void draw(Graphics g);
 
     void update(Point point);
-
-    boolean contains(Point point);
 }

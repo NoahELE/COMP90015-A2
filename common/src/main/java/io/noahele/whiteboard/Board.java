@@ -1,11 +1,10 @@
 package io.noahele.whiteboard;
 
-import io.noahele.whiteboard.shape.Shape;
-
-import java.awt.*;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
+
+import io.noahele.whiteboard.shape.Shape;
 
 public interface Board extends Remote {
     /**

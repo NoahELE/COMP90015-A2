@@ -31,9 +31,4 @@ public class Eraser implements Shape {
     public void update(Point point) {
         points.add(point);
     }
-
-    @Override
-    public boolean contains(Point point) {
-        return points.stream().anyMatch(p -> p.distance(point) < 5);
-    }
 }

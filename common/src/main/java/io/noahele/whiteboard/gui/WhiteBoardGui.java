@@ -1,15 +1,17 @@
 package io.noahele.whiteboard.gui;
 
-import io.noahele.whiteboard.*;
-import lombok.extern.slf4j.Slf4j;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.rmi.RemoteException;
 
-@Slf4j
+import javax.swing.JFrame;
+
+import io.noahele.whiteboard.Board;
+import io.noahele.whiteboard.Chat;
+import io.noahele.whiteboard.Connection;
+import io.noahele.whiteboard.UserManager;
+
 public class WhiteBoardGui extends JFrame {
     private final DrawingPanel drawingPanel;
     private final ChatPanel chatPanel;
@@ -36,15 +38,15 @@ public class WhiteBoardGui extends JFrame {
         setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        drawingPanel = new DrawingPanel(board, connection);
+        drawingPanel = new DrawingPanel(board);
         ControlPanel controlPanel = new ControlPanel(drawingPanel);
         add(drawingPanel, BorderLayout.CENTER);
         add(controlPanel, BorderLayout.NORTH);
 
-        chatPanel = new ChatPanel(chat, connection, username);
+        chatPanel = new ChatPanel(chat, username);
         add(chatPanel, BorderLayout.EAST);
 
-        userPanel = new UserPanel(userManager, connection, username, manager);
+        userPanel = new UserPanel(userManager, username, manager);
         add(userPanel, BorderLayout.WEST);
 
         addWindowListener(new WindowAdapter() {

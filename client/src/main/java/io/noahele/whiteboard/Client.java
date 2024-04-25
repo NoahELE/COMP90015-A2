@@ -1,11 +1,5 @@
 package io.noahele.whiteboard;
 
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
-import io.noahele.whiteboard.gui.WhiteBoardGui;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import javax.swing.*;
 import java.io.IOException;
 import java.net.Socket;
 import java.rmi.NotBoundException;
@@ -14,12 +8,18 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.UUID;
 
-@Slf4j
+import javax.swing.JOptionPane;
+
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
+
+import io.noahele.whiteboard.gui.WhiteBoardGui;
+import lombok.RequiredArgsConstructor;
+
 @RequiredArgsConstructor
 public class Client {
     private static final int UPDATE_INTERVAL = 500;
 
-    @SuppressWarnings({"DuplicatedCode", "BusyWait"})
+    @SuppressWarnings({ "DuplicatedCode", "BusyWait" })
     public static void main(String[] args) {
         // set look and feel
         FlatMacLightLaf.setup();

@@ -3,8 +3,6 @@ package io.noahele.whiteboard.shape;
 import java.awt.*;
 
 public class Circle implements Shape {
-    private static final int THRESHOLD = 1;
-
     private final Color color;
     private final Point start;
     private Point end;
@@ -26,10 +24,5 @@ public class Circle implements Shape {
     @Override
     public void update(Point point) {
         end = point;
-    }
-
-    @Override
-    public boolean contains(Point point) {
-        return Math.abs(start.distance(end) - start.distance(point)) < THRESHOLD;
     }
 }

@@ -1,7 +1,6 @@
 package io.noahele.whiteboard.gui;
 
 import io.noahele.whiteboard.Board;
-import io.noahele.whiteboard.Connection;
 import io.noahele.whiteboard.shape.Rectangle;
 import io.noahele.whiteboard.shape.Shape;
 import io.noahele.whiteboard.shape.*;
@@ -13,10 +12,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.rmi.RemoteException;
 
-@SuppressWarnings("DuplicatedCode")
 public class DrawingPanel extends JPanel {
     private final Board board;
-    private final Connection connection;
     @Getter
     @Setter
     private Color color = Color.BLACK;
@@ -25,9 +22,8 @@ public class DrawingPanel extends JPanel {
     private int eraserSize = 16;
     private Shape currentShape;
 
-    public DrawingPanel(Board board, Connection connection) {
+    public DrawingPanel(Board board) {
         this.board = board;
-        this.connection = connection;
         setDoubleBuffered(true);
     }
 

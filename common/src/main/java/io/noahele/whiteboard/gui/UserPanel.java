@@ -1,27 +1,25 @@
 package io.noahele.whiteboard.gui;
 
-import io.noahele.whiteboard.Connection;
-import io.noahele.whiteboard.UserManager;
-
-import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import io.noahele.whiteboard.UserManager;
+
 public class UserPanel extends JPanel {
     private final DefaultListModel<String> listModel = new DefaultListModel<>();
     private final UserManager userManager;
     private final Set<String> currentUsers = ConcurrentHashMap.newKeySet();
-    private final Connection connection;
-    private final String username;
 
-
-    public UserPanel(UserManager userManager, Connection connection, String username, boolean manager) {
+    public UserPanel(UserManager userManager, String username, boolean manager) {
         this.userManager = userManager;
-        this.connection = connection;
-        this.username = username;
         JList<String> list = new JList<>(listModel);
         if (manager) {
             list.addMouseListener(new MouseAdapter() {

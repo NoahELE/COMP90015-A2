@@ -1,0 +1,5 @@
+{
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "java.compile.nullAnalysis.mode": "interactive",
+  "cSpell.words": ["Javalin", "noahele"]
+}

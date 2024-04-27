@@ -1,17 +1,13 @@
 package io.noahele.whiteboard.gui;
 
+import io.noahele.whiteboard.UserManager;
+
+import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-
-import io.noahele.whiteboard.UserManager;
 
 public class UserPanel extends JPanel {
     private final DefaultListModel<String> listModel = new DefaultListModel<>();

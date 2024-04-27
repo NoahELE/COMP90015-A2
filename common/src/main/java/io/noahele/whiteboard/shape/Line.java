@@ -1,15 +1,15 @@
 package io.noahele.whiteboard.shape;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Point;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.awt.*;
 
 @NoArgsConstructor
 @Data
 public class Line implements Shape {
-    private static final int THRESHOLD = 1;
-
     private Color color;
     private Point start;
     private Point end;

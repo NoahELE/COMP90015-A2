@@ -3,7 +3,6 @@ package io.noahele.whiteboard;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import io.noahele.whiteboard.gui.WhiteBoardGui;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -17,10 +16,9 @@ import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Slf4j
 @RequiredArgsConstructor
 public class ManagerClient {
-    private static final int UPDATE_INTERVAL = 500;
+    private static final int UPDATE_INTERVAL = 1000;
 
     @SuppressWarnings({"DuplicatedCode", "BusyWait"})
     public static void main(String[] args) {
@@ -54,15 +52,14 @@ public class ManagerClient {
                 }
             }).start();
 
-            Thread.sleep(100);
+            Thread.sleep(1000);
 
             Registry registry = LocateRegistry.getRegistry(host, port);
             Board board = (Board) registry.lookup(Board.class.getName());
             Chat chat = (Chat) registry.lookup(Chat.class.getName());
             UserManager userManager = (UserManager) registry.lookup(UserManager.class.getName());
 
-            Connection connection = new Connection(new Socket(host, port + 1));
-            WhiteBoardGui whiteBoardGui = new WhiteBoardGui(board, chat, userManager, connection, true, username);
+            WhiteBoardGui whiteBoardGui = new WhiteBoardGui(board, chat, userManager, true, username);
             new Thread(() -> {
                 while (true) {
                     whiteBoardGui.updateBoard();

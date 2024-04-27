@@ -1,16 +1,14 @@
 package io.noahele.whiteboard.gui;
 
-import java.awt.BorderLayout;
+import io.noahele.whiteboard.Board;
+import io.noahele.whiteboard.Chat;
+import io.noahele.whiteboard.UserManager;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.rmi.RemoteException;
-
-import javax.swing.JFrame;
-
-import io.noahele.whiteboard.Board;
-import io.noahele.whiteboard.Chat;
-import io.noahele.whiteboard.Connection;
-import io.noahele.whiteboard.UserManager;
 
 public class WhiteBoardGui extends JFrame {
     private final DrawingPanel drawingPanel;
@@ -26,7 +24,6 @@ public class WhiteBoardGui extends JFrame {
             Board board,
             Chat chat,
             UserManager userManager,
-            Connection connection,
             boolean manager,
             String username) {
 
@@ -51,13 +48,12 @@ public class WhiteBoardGui extends JFrame {
 
         addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosed(WindowEvent e) {
+            public void windowClosing(WindowEvent e) {
                 try {
                     userManager.removeUser(username);
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
-                connection.close();
             }
         });
 

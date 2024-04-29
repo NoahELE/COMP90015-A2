@@ -54,10 +54,7 @@ public class Client {
                             System.exit(0);
                         }
                     } catch (RemoteException e) {
-                        JOptionPane.showMessageDialog(null,
-                                "Failed to connect to server: " + e.getMessage(),
-                                "Error",
-                                JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Failed to connect to server: " + e.getMessage());
                     }
                     whiteBoardGui.updateBoard();
                     whiteBoardGui.updateChat();
@@ -72,10 +69,7 @@ public class Client {
             userManager.addUser(username);
             whiteBoardGui.setVisible(true);
         } catch (IOException | NotBoundException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Failed to connect to server: " + e.getMessage(),
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Failed to connect to server: " + e.getMessage());
         }
     }
 }

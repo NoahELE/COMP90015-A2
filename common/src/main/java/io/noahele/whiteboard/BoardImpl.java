@@ -1,11 +1,11 @@
 package io.noahele.whiteboard;
 
+import io.noahele.whiteboard.shape.Shape;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-import io.noahele.whiteboard.shape.Shape;
 
 public class BoardImpl extends UnicastRemoteObject implements Board {
     private final List<Shape> shapes = new CopyOnWriteArrayList<>();
@@ -22,5 +22,16 @@ public class BoardImpl extends UnicastRemoteObject implements Board {
     @Override
     public List<Shape> getShapes() {
         return shapes;
+    }
+
+    @Override
+    public void clearShapes() throws RemoteException {
+        shapes.clear();
+    }
+
+    @Override
+    public void updateBoard(List<Shape> newShapes) throws RemoteException {
+        shapes.clear();
+        shapes.addAll(newShapes);
     }
 }

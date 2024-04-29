@@ -33,12 +33,21 @@ public class WhiteBoardGui extends JFrame {
             setTitle("WhiteBoard - Client");
         }
         setSize(1200, 800);
+        setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         drawingPanel = new DrawingPanel(board);
-        ControlPanel controlPanel = new ControlPanel(drawingPanel);
         add(drawingPanel, BorderLayout.CENTER);
-        add(controlPanel, BorderLayout.NORTH);
+
+        ControlPanel controlPanel = new ControlPanel(drawingPanel);
+        add(controlPanel, BorderLayout.SOUTH);
+
+        if (manager) {
+            JMenuBar menuBar = new JMenuBar();
+            FileMenu fileMenu = new FileMenu(board, userManager, username);
+            menuBar.add(fileMenu);
+            setJMenuBar(menuBar);
+        }
 
         chatPanel = new ChatPanel(chat, username);
         add(chatPanel, BorderLayout.EAST);

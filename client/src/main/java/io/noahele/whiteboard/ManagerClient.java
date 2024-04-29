@@ -75,10 +75,7 @@ public class ManagerClient {
             userManager.addUser(username);
             whiteBoardGui.setVisible(true);
         } catch (IOException | NotBoundException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Failed to connect to server: " + e.getMessage(),
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Failed to connect to server: " + e.getMessage());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
